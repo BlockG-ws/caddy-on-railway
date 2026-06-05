@@ -5,5 +5,13 @@
 # Remember, Railway terminates TLS before it gets to Caddy.
 :8080
 
+@gen204 path /generate_204
+
+respond @gen204 "" 204 {
+	header Cache-Control "no-store"
+	header X-NetworkManager-Status "online"
+	header Access-Control-Allow-Origin "*"
+}
+
 root /www
 file_server
